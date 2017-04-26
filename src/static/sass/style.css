@@ -3,4 +3,7 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
+.nav-wrapper {
+  background: #181c1f; }
+
 /*# sourceMappingURL=style.css.map */
