@@ -1,0 +1,50 @@
+{% extends "hawk/base.html" %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+
+{% block content %}
+<!--
+<div class="row">
+    <form class="col s12" action="" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+-->
+
+
+	<div class="contact">
+		<div class="center">
+			<h4>Contact</h4>
+			<p>Submit a question or comment</p>
+			 <form class="" action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-default" value="Create new"/>
+          </form>
+		</div>
+	</div>
+{% endblock content %}
