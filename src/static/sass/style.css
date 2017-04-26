@@ -3,7 +3,19 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
-.nav-wrapper {
-  background: #181c1f; }
+.nav-core {
+  background: #181c1f;
+  text-transform: uppercase;
+  min-height: 80px;
+  padding-top: 8px;
+  padding-left: 10%;
+  padding-right: 10%; }
+
+.page-footer {
+  background-color: #181c1f; }
+
+.footer-copyright {
+  background-color: #0e1112 !important;
+  text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */
