@@ -1,4 +1,5 @@
 from django.shortcuts import render, render_to_response
+from django.core.mail import send_mail
 
 
 from .models import Contact
@@ -18,7 +19,15 @@ def contact(request):
         form = ContactForm(request.POST)
         # Если форма заполнена корректно, сохраняем все введённые пользователем значения
         if form.is_valid():
-            # save чтобы сохранилось
+            # Отправка почты тому, кто ввел свои данные.
+            # Subject here-Тема письма;Сообщение;От кого;Кому.
+            send_mail(
+                'Subject here',
+                'Here is the message.',
+                'from@example.com',
+                ['to@example.com'],
+                fail_silently=False,
+                )
             form.save()
             # Rедирект на другую страницу
             return render(request, 'thanks.html')

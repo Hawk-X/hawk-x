@@ -116,3 +116,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/media')
+
+# Email send setup for 'mail.ru'.
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "example@example.com" # <- Enter your email
+EMAIL_HOST_PASSWORD = "password" # <- Enter your password
+EMAIL_USE_TLS = True
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
