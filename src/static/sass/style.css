@@ -6,8 +6,8 @@ body {
 .nav-core {
   background: #181c1f;
   text-transform: uppercase;
-  min-height: 80px;
-  padding-top: 8px;
+  min-height: 90px;
+  padding-top: 10px;
   padding-left: 10%;
   padding-right: 10%; }
 
@@ -26,5 +26,15 @@ body {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat; }
+
+.center-align h4 {
+  padding-top: 25px; }
+
+#contact-form {
+  padding-bottom: 30px;
+  padding-top: 30px; }
+
+#id_question {
+  height: 1%; }
 
 /*# sourceMappingURL=style.css.map */
