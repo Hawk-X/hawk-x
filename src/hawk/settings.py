@@ -23,6 +23,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 INSTALLED_APPS = [
     # Local application
     'prox',
+    'shop',
     # Custom admin panel Jet
     'jet',
     # Django default
@@ -100,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
