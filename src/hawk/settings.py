@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'shop',
     # Custom admin panel Jet
     'jet',
+    # Third-parthy widget tweak
+    'widget_tweaks',
     # Django default
     'django.contrib.admin',
     'django.contrib.auth',
