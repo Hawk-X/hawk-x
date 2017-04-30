@@ -1,15 +1,13 @@
-from django.shortcuts import render, render_to_response
 from django.core.mail import send_mail
+from django.shortcuts import render, render_to_response
 
-
-from .models import Contact
 from .forms import ContactForm
 
 
 def home(request):
     # contact_list = Contact.objects.all()
     # context = {'contact_list': contact_list}
-    template_name='home.html'
+    template_name = 'home.html'
     return render_to_response(template_name)
 
 
@@ -27,9 +25,9 @@ def contact(request):
                 'from@example.com',
                 ['to@example.com'],
                 fail_silently=False,
-                )
+            )
             form.save()
-            # Rедирект на другую страницу
+            # Редирект на другую страницу
             return render(request, 'thanks.html')
     else:
         # Заполняем форму
