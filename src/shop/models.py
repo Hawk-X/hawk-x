@@ -14,7 +14,7 @@ class TeslaCar(models.Model):
 
     title = models.CharField(max_length=50)
     author = models.CharField(blank=True, max_length=50)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     engine_power = models.IntegerField(blank=True, null=True)
     car_type = models.PositiveSmallIntegerField(choices=CAR_TYPES)
     publication_date = models.DateField(null=True)
