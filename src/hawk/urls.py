@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^', include('prox.urls')),
     url(r'^', include('shop.urls', namespace='shop')),
     url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/', admin.site.urls),
 ]

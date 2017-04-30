@@ -5,9 +5,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
+# All auth
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '*ip7#(8)u&+*rx%30qywt*9z&oq3w1=u#n!#u6^2u*paobxlv^'
@@ -24,11 +26,15 @@ INSTALLED_APPS = [
     # Local application
     'prox',
     'shop',
+    # All auth requirements
+    'allauth',
+    'allauth.account',
     # Custom admin panel Jet
     'jet',
-    # Third-parthy widget tweak
+    # Third-party widget tweak
     'widget_tweaks',
     # Django default
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,8 +131,10 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/media')
 # Email send setup for 'mail.ru'.
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = "example@example.com" # <- Enter your email
-EMAIL_HOST_PASSWORD = "password" # <- Enter your password
+# <- Enter your email
+EMAIL_HOST_USER = "example@example.com"
+# <- Enter your password
+EMAIL_HOST_PASSWORD = "password"
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
