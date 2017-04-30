@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # All auth requirements
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     # Custom admin panel Jet
     'jet',
     # Third-party widget tweak
@@ -42,8 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'en-EN'
 
 TIME_ZONE = 'UTC'
 
@@ -138,3 +137,7 @@ EMAIL_HOST_PASSWORD = "password"
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Django allauth setings
+LOGIN_REDIRECT_URL = 'shop:index'
+SITE_ID = 1
