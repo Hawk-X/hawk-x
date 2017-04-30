@@ -27,14 +27,29 @@ body {
   background-position: 50% 50%;
   background-repeat: no-repeat; }
 
-.center-align h4 {
-  padding-top: 25px; }
+.center-align h3 {
+  padding-top: 35px; }
 
 #contact-form {
   padding-bottom: 30px;
   padding-top: 30px; }
 
+.contact-row {
+  padding-bottom: 5%; }
+
 #id_question {
   height: 1%; }
+
+.empty h4 {
+  margin-bottom: 5%; }
+
+.shop-wrapper {
+  padding-top: 5%;
+  padding-bottom: 10%; }
+
+.shop-header {
+  background: #666; }
+  .shop-header .shop {
+    margin-right: 3%; }
 
 /*# sourceMappingURL=style.css.map */
