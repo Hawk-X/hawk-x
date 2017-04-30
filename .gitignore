@@ -4,3 +4,6 @@ src/dev.sqlite3
 /src/prox/migrations/
 /src/shop/migrations/
 /.gitignore
+/src/hawk/__pychache__
+/src/prox/__pychache__
+/src/shop/__pychache__
