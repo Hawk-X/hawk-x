@@ -1,14 +1,18 @@
 {% load static %}
 <nav class="shop-header">
 	<div class="shop">
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="#">Sign up</a></li>
-			<li><a href="#">Log in</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="">Cart <span class="new badge">4</span></a></li>
+        <a href="{% url 'shop:index' %}" class="center brand-logo">
+            <i class="material-icons">shop</i>Shop</a>
+        <ul id="nav-shop" class="right">
+            {% if user.is_authenticated %}
+{#               <li><a href="{% url 'accounts_profile' %}">Profile</a></li>#}
+                <li><a href="">Cart <span class="new badge">4</span></a></li>
+{#               <li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+                <li><a href="{% url 'account_login' %}">Log in</a></li>
+            {% endif %}
 		</ul>
-		<!--<div class="chip">
-		<img src="{% static "img/spacex.jpg" %}" alt="Contact Person">Matz Chromatiq
-		</div>-->
 	</div>
 </nav>
