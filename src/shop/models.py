@@ -2,6 +2,7 @@ from django.db import models
 
 
 class TeslaCar(models.Model):
+    """Простая модель Тесла."""
     MODELS = 1
     MODEL3 = 2
     MODELX = 3
@@ -17,3 +18,11 @@ class TeslaCar(models.Model):
     engine_power = models.IntegerField(blank=True, null=True)
     car_type = models.PositiveSmallIntegerField(choices=CAR_TYPES)
     publication_date = models.DateField(null=True)
+    class Meta:
+        """Сортировка описанию.За кастомные названия отвечает verbose_name."""
+        ordering = ['title']
+        verbose_name = 'car list'
+        verbose_name_plural = 'Tesla Car'
+
+    def __str__(self):
+        return self.title
