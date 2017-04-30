@@ -1,6 +1,35 @@
 {% extends "hawk/base.html" %}
-{% block title %}Hawk Shop{% endblock title %}
-
+{% load static %}
+{% block title %}Shop{% endblock title %}
 {% block content %}
-	<h1>Hello, World</h1>
+
+{% include "shop-header.html" %}
+
+    <div class="shop-wrapper">
+        {% for item in items %}
+            <div class="row">
+                <div class="col s4">
+                    {{ i.title }}
+                </div>
+                <div class="col s4">
+                    {{ i.price }}
+                </div>
+                <div class="col s4">
+                    {{ i.engine_power }}
+                </div>
+            </div>
+            {% empty %}
+            <div class="center-align empty">
+                <h3>Oops!</h3>
+                <h4>Sorry. No car available.</h4>
+                <button class="btn waves-effect waves-light js-create-car" type="submit" name="action">New car<i class="material-icons right">send</i>
+                </button>
+            </div>
+
+            <div class="modal fade" id="modal-car">
+                <div class="modal-dialog">
+                  <div class="modal-content"></div>
+                </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
