@@ -40,16 +40,39 @@ body {
 #id_question {
   height: 1%; }
 
-.empty h4 {
-  margin-bottom: 5%; }
+.empty {
+  padding-top: 5%;
+  padding-bottom: 15%; }
+  .empty h4 {
+    margin-bottom: 5%; }
 
 .shop-wrapper {
   padding-top: 5%;
-  padding-bottom: 10%; }
+  padding-bottom: 3%;
+  padding-left: 40px; }
 
 .shop-header {
-  background: #666; }
+  background: #666;
+  text-transform: uppercase; }
   .shop-header .shop {
-    margin-right: 3%; }
+    margin-right: 10%; }
+    .shop-header .shop i {
+      font-size: 40px; }
+    .shop-header .shop .brand-logo {
+      padding-left: 9%; }
+
+#login {
+  padding-top: 5%;
+  padding-bottom: 7%; }
+
+.logout {
+  padding-top: 8%;
+  padding-bottom: 12%; }
+  .logout .btn-large {
+    margin-top: 5%; }
+
+#signup {
+  padding-top: 5%;
+  padding-bottom: 7%; }
 
 /*# sourceMappingURL=style.css.map */
