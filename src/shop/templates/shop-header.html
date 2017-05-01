@@ -1,8 +1,8 @@
 {% load static %}
 <nav class="shop-header">
 	<div class="shop">
-        <a href="{% url 'shop:index' %}" class="center brand-logo">
-            <i class="material-icons">shop</i>Shop</a>
+        <a href="{% url 'shop:index' %}" class="left brand-logo">
+            <i class="material-icons">shopping_basket</i>market</a>
         <ul id="nav-shop" class="right">
             {% if user.is_authenticated %}
 {#               <li><a href="{% url 'accounts_profile' %}">Profile</a></li>#}
@@ -13,6 +13,17 @@
                 <li><a href="{% url 'account_signup' %}">Sign up</a></li>
                 <li><a href="{% url 'account_login' %}">Log in</a></li>
             {% endif %}
+            
+            {% if messages %}
+            <div class="message">
+            <strong>Messages:</strong>
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 		</ul>
 	</div>
 </nav>

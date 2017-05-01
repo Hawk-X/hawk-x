@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block title %}Sign Out{% endblock %}
+
+{% block content %}
+    <div class="row logout">
+        <div class="center-align">
+            <h2>Sign out</h2>
+            <h4>Are you sure you want to sign out?</h4>
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}"
+                     value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button class="btn-large waves-effect waves-light" type="submit">
+                  Yeah, Sign Out</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
