@@ -1,38 +1,41 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.template.loader import render_to_string
-# from django.views import View
+from django.core.exceptions import ImproperlyConfigured
+from django.views.generic.list import ListView
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# from django.template.loader import render_to_string
 
 from .models import TeslaCar
-from .forms import TeslaForm
+# from .forms import TeslaForm
 
 
-def index(request):
-    items = TeslaCar.objects.all()
-    context = {'items': items}
+class IndexView(ListView):
+    model = TeslaCar
     template_name = 'index.html'
-    return render(request, template_name, context)
 
+    def get_queryset(self):
+        if self.queryset is not None:
+            queryset = self.queryset
+            if isinstance(queryset, QuerySet):
+                queryset = queryset.all()
+        elif self.model is not None:
+            queryset = self.model._default_manager.all()
+        else:
+            raise ImproperlyConfigured(
+                "%(cls)s is missing a QuerySet. Define "
+                "%(cls)s.model, %(cls)s.queryset, or override "
+                "%(cls)s.get_queryset()." % {
+                    'cls': self.__class__.__name__
+                }
+            )
+        ordering = self.get_ordering()
+        if ordering:
+            if isinstance(ordering, six.string_types):
+                ordering = (ordering)
+            queryset = queryset.order_by(*ordering)
+        return queryset
 
-# class CarCreateView(View):
-#     form_tesla = TeslaForm()
-#     template = 'partial_car_create.html'
-# 	html_form = render_to_string(template, context, request=request)
-#
-#     def get(self, request):
-#         form = self.form_tesla()
-#         return render(request, self.template, {'form': form})
-#
-#     def post(self, request):
-# 		form = self.form_tesla(request.POST)
-# 		if form.is_valid():
-# 			pass
-# 		form.save()
-# 		return redirect('/')
-#         return JsonResponse()
-
-def car_create(request):
-    form = TeslaForm()
-    context = {'form': form}
-    html_form = render_to_string('book/partial_car_create.html', context, request=request)
-    return JsonResponse({'html_form': html_form})
+# def car_create(request):
+#     form = TeslaForm()
+#     context = {'form': form}
+#     html_form = render_to_string('partial_car_create.html', context, request=request)
+#     return JsonResponse({'html_form': html_form})
