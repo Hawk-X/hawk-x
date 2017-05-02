@@ -1,24 +1,49 @@
+from django.core.exceptions import ImproperlyConfigured
 from django.core.mail import send_mail
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
+from django.views.generic import TemplateView, FormView
 
 from .forms import ContactForm
 
 
-def home(request):
-    # contact_list = Contact.objects.all()
-    # context = {'contact_list': contact_list}
+class HomeView(TemplateView):
+    """A view that renders a template.  This view will also pass into the context
+    any keyword arguments passed by the URLconf."""
     template_name = 'home.html'
-    return render_to_response(template_name)
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
+
+    def get_template_names(self):
+        """
+        Returns a list of template names to be used for the request. Must return
+        a list. May not be called if render_to_response is overridden.
+        """
+        if self.template_name is None:
+            raise ImproperlyConfigured(
+                "TemplateResponseMixin requires either a definition of "
+                "'template_name' or an implementation of 'get_template_names()'")
+        else:
+            return [self.template_name]
 
 
-def contact(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        # Если форма заполнена корректно, сохраняем все введённые пользователем значения
+class ContactFormView(FormView):
+    """Simple CBV FormView"""
+    form_class = ContactForm
+    template_name = 'contact.html'
+
+    def get(self, request, *args, **kwargs):
+        """Handles GET requests and instantiates a blank version of the form."""
+        return self.render_to_response(self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handles POST requests, instantiating a form instance with the passed
+        POST variables and then checked for validity.
+        """
+        form = self.get_form()
         if form.is_valid():
-            # Отправка почты тому, кто ввел свои данные.
-            # Subject here-Тема письма;Сообщение;От кого;Кому.
             send_mail(
                 'Subject here',
                 'Here is the message.',
@@ -27,11 +52,6 @@ def contact(request):
                 fail_silently=False,
             )
             form.save()
-            # Редирект на другую страницу
             return render(request, 'thanks.html')
-    else:
-        # Заполняем форму
-        form = ContactForm()
-        # Переходим на опр. странцу
-    template_name = 'contact.html'
-    return render(request, template_name, {'form': form})
+        else:
+            return self.form_invalid(form)

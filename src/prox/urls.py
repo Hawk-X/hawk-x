@@ -1,9 +1,9 @@
 from django.conf.urls import url
 
 # Local views prox
-from . import views
+from .views import HomeView, ContactFormView
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^contact/$', ContactFormView.as_view(), name='contact'),
 ]
