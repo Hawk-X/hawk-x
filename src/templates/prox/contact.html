@@ -1,0 +1,60 @@
+{% extends "hawk/base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block content %}
+
+<div class="center-align">
+  <div class="row contact-row">
+    <h3>Contact</h3>
+    <p>Submit a question, comment or other</p>
+      <form id="contact-form" class="col s6 offset-m3 z-depth-3" action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+
+          {{ form.non_field_errors }}
+          <div class="input-field col s6">
+          {{ form.first_name.errors }}
+          <label for="{{ form.first_name.id_for_label }}">First Name</label>
+          {{ form.first_name }}
+          </div>
+
+          <div class="input-field col s6">
+          {{ form.last_name.erros }}
+          <label for="last_name">Last Name</label>
+          {{ form.last_name }}
+          </div>
+        </div>
+
+        <div class="row">
+          {{ form.non_field_errors }}
+          <div class="input-field col s12">
+          {{ form.email.errors }}
+          <label for="Email">Email</label>
+          {{ form.email }}
+          </div>
+        </div>
+
+        <div class="row">
+          {{ form.non_field_errors }}
+          <div class="input-field col s12">
+          {{ form.phone.errors }}
+          <label for="Phone">Phone</label>
+          {{ form.phone }}
+          </div>
+        </div>
+
+        <div class="row">
+          {{ form.non_field_errors }}
+          <div class="input-field col s12">
+          {{ form.question.errors }}
+          <label for="Question">Question</label>
+          {{ form.question }}
+          </div>
+        </div>
+        <input type="submit" class="btn waves-effect waves-light" value="Create new">
+      </form>
+    </div>
+</div>
+{% endblock content %}
