@@ -5,9 +5,9 @@
             <i class="material-icons">shopping_basket</i>market</a>
         <ul id="nav-shop" class="right">
             {% if user.is_authenticated %}
-{#               <li><a href="{% url 'accounts_profile' %}">Profile</a></li>#}
+               {# <li><a href="{% url 'account_profile' %}">Profile</a></li> #}
                 <li><a href="">Cart <span class="new badge">4</span></a></li>
-{#               <li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
+               {# <li><a href="{% url 'account_email' %}">Change E-mail</a></li> #}
                 <li><a href="{% url 'account_logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'account_signup' %}">Sign up</a></li>

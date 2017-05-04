@@ -11,10 +11,10 @@
         <div class="shop-wrapper">
             {% for query in object_list %}
             <div class="row">
-                <div class="col s12 m3 offset-s6">
+                <div class="col s4 offset-s4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{% static "img/spacex.jpg" %}">
+                            <img class="activator" src="{{ query.image.url }}">
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">
@@ -32,7 +32,9 @@
                     </div>
                 </div>
             </div>
+        </div>
     {% endfor %}
+
     {% else %}
             <div class="center-align empty">
                 <h3>Oops!</h3>
@@ -41,6 +43,5 @@
                 name="action">New car<i class="material-icons right">send</i>
                 </button>
             </div>
-    </div>
     {% endif %}
 {% endblock content %}
