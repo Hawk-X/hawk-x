@@ -36,6 +36,9 @@ class IndexView(ListView):
         return queryset
 
 
+
+
+
 def car_create(request):
     data = dict()
 

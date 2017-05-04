@@ -15,14 +15,15 @@ class TeslaCar(models.Model):
     title = models.CharField(max_length=50)
     author = models.CharField(blank=True, max_length=50)
     description = models.TextField(blank=True)
+    slug = models.SlugField(max_length=100, db_index=True, null=True, unique=True)
     image = models.ImageField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     engine_power = models.IntegerField(blank=True, null=True)
     car_type = models.PositiveSmallIntegerField(choices=CAR_TYPES)
     publication_date = models.DateField(null=True)
     class Meta:
-        """Сортировка описанию.За кастомные названия отвечает verbose_name."""
-        ordering = ['title']
+        """Сортировка по дате.За кастомные названия отвечает verbose_name."""
+        ordering = ['publication_date']
         verbose_name = 'car list'
         verbose_name_plural = 'Tesla Car'
 
