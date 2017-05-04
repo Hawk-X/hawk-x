@@ -9,7 +9,7 @@ from .forms import ContactForm
 class HomeView(TemplateView):
     """A view that renders a template.  This view will also pass into the context
     any keyword arguments passed by the URLconf."""
-    template_name = 'home.html'
+    template_name = 'prox/home.html'
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
@@ -31,7 +31,7 @@ class HomeView(TemplateView):
 class ContactFormView(FormView):
     """Simple CBV FormView"""
     form_class = ContactForm
-    template_name = 'contact.html'
+    template_name = 'prox/contact.html'
 
     def get(self, request, *args, **kwargs):
         """Handles GET requests and instantiates a blank version of the form."""
@@ -52,6 +52,6 @@ class ContactFormView(FormView):
                 fail_silently=False,
             )
             form.save()
-            return render(request, 'thanks.html')
+            return render(request, 'prox/thanks.html')
         else:
             return self.form_invalid(form)
