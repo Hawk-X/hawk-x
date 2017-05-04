@@ -1,17 +1,18 @@
-$(function () {
-
-  $(".js-create-car").click(function () {
+$("#modal-car").on("submit", ".js-create-car", function () {
+    var form = $(this);
     $.ajax({
-      url: '/shop/create/',
-      type: 'get',
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
       dataType: 'json',
-      beforeSend: function () {
-        $("#modal-car").modal("show");
-      },
       success: function (data) {
-        $("#modal-car .modal-content").html(data.html_form);
+        if (data.form_is_valid) {
+          alert("Car created!");  // <-- This is just a placeholder for now for testing
+        }
+        else {
+          $("#modal-car .modal-content").html(data.html_form);
+        }
       }
     });
+    return false;
   });
-
-});

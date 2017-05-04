@@ -31,8 +31,8 @@ body {
   padding-top: 35px; }
 
 #contact-form {
-  padding-bottom: 30px;
-  padding-top: 30px; }
+  padding-top: 30px;
+  padding-bottom: 40px; }
 
 .contact-row {
   padding-bottom: 5%; }
@@ -47,9 +47,8 @@ body {
     margin-bottom: 5%; }
 
 .shop-wrapper {
-  padding-top: 5%;
-  padding-bottom: 3%;
-  padding-left: 40px; }
+  padding-top: 3%;
+  padding-bottom: 2%; }
 
 .shop-header {
   background: #666;
