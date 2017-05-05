@@ -30,6 +30,6 @@ Step 1.
 - $ Create your first item in shop.
 ```
 ### Screenshots
-![Home](https://raw.githubusercontent.com/BORN2LOSE/hawk-x/dev/scrots/home.png)
-![Contact](https://raw.githubusercontent.com/BORN2LOSE/hawk-x/dev/scrots/contact.png)
-![Shop](https://raw.githubusercontent.com/BORN2LOSE/hawk-x/dev/scrots/shop.png)
+![Home](https://raw.githubusercontent.com/Hawk-X/hawk-x/dev/scrots/home.png)
+![Contact](https://raw.githubusercontent.com/Hawk-X/hawk-x/dev/scrots/contact.png)
+![Shop](https://raw.githubusercontent.com/Hawk-X/hawk-x/dev/scrots/shop.png)
