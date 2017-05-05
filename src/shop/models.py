@@ -21,6 +21,7 @@ class TeslaCar(models.Model):
     engine_power = models.IntegerField(blank=True, null=True)
     car_type = models.PositiveSmallIntegerField(choices=CAR_TYPES)
     publication_date = models.DateField(null=True)
+
     class Meta:
         """Сортировка по дате.За кастомные названия отвечает verbose_name."""
         ordering = ['publication_date']
@@ -29,3 +30,6 @@ class TeslaCar(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return 'shop:index', self.slug

@@ -1,9 +1,7 @@
 import six
 from django.core.exceptions import ImproperlyConfigured
-from django.shortcuts import render
+from django.views.generic import CreateView
 from django.views.generic.list import ListView
-from django.http import JsonResponse
-
 
 from .models import TeslaCar
 from .forms import TeslaForm
@@ -31,27 +29,38 @@ class IndexView(ListView):
         ordering = self.get_ordering()
         if ordering:
             if isinstance(ordering, six.string_types):
-                ordering = (ordering)
+                ordering = ordering
             queryset = queryset.order_by(*ordering)
         return queryset
 
 
+class CreateCarView(CreateView):
+    model = TeslaCar
+    form_class = TeslaForm
+    template_name = ''
+    slug_field = 'slug'
+    success_url = 'shop/index.html'
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.object = None
 
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+            return self.form_class(**self.get_form_class())
 
-def car_create(request):
-    data = dict()
+    def get(self, request, *args, **kwargs):
+        return super(CreateView, self).get(request, *args, **kwargs)
 
-    if request.method == 'POST':
-        form = TeslaForm(request.POST)
+    def post(self, request, *args, **kwargs):
+        """
+               Handles POST requests, instantiating a form instance with the passed
+               POST variables and then checked for validity.
+               """
+        form = self.get_form()
         if form.is_valid():
             form.save()
-            data['form_is_valid'] = True
+            return self.form_valid(form)
         else:
-            data['form_is_valid'] = False
-    else:
-        form = TeslaForm()
-
-    context = {'form': form}
-    data['html_form'] = render('shop/partical_car_create.html', context, request=request)
-    return JsonResponse(data)
+            return self.form_invalid(form)
