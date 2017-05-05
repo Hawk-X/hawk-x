@@ -92,6 +92,9 @@ if [[ $WORK_DIR ]]; then
     chmod u+x remove.py
     python remove.py
     echo -e $white"Remove repositories..."
+    sleep 0.3
+    pip install -r requirements.txt
+    echo -e $white"Installing..."
     exit 1
 else
     echo -e $Fiuscha "Please, change the working directory to hawk"
